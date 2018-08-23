@@ -1,6 +1,6 @@
 # Counter
 
-This is [ReactComponentKit]() example. Counter is very simple and basic redux example. 
+This is [ReactComponentKit](https://github.com/skyfe79/ReactComponentKit) example. Counter is very simple and basic redux example. 
 
 ## Screenshot
 
