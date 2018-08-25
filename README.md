@@ -1,6 +1,6 @@
 # Counter
 
-This is [ReactComponentKit](https://github.com/skyfe79/ReactComponentKit) example. Counter is very simple and basic redux example. 
+This is [ReactComponentKit](https://github.com/ReactComponentKit/ReactComponentKit) example. Counter is very simple and basic redux example. 
 
 ## Screenshot
 
@@ -259,7 +259,7 @@ class CounterViewController: UIViewController {
 
 The MIT License
 
-Copyright © 2018 Sungcheol Kim, https://github.com/skyfe79/Counter
+Copyright © 2018 Sungcheol Kim, https://github.com/ReactComponentKit/Counter
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
