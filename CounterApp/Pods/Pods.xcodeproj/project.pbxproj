@@ -2552,43 +2552,6 @@
 			};
 			name = Debug;
 		};
-		601E1E314CF574E4E6EF00EB1F339989 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1844960E84F1A015329B33BB210A7C48 /* BKEventBus.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BKEventBus/BKEventBus-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BKEventBus/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/BKEventBus/BKEventBus.modulemap";
-				PRODUCT_MODULE_NAME = BKEventBus;
-				PRODUCT_NAME = BKEventBus;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		6C398D51EDB8BDB1D1FA0BC9FFB67A31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0426529B5ADA76566402BF2529485F50 /* BKRedux.xcconfig */;
@@ -2665,7 +2628,7 @@
 			};
 			name = Debug;
 		};
-		990A69D9015E45B4426FA71229F68A03 /* Debug */ = {
+		8EC796D9122F5C40E75E72927FC89FBD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1844960E84F1A015329B33BB210A7C48 /* BKEventBus.xcconfig */;
 			buildSettings = {
@@ -2694,7 +2657,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.2;
+				SWIFT_VERSION = 4.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2830,6 +2793,43 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		DF6447533BB2B50AA0F46FC3FA789A17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1844960E84F1A015329B33BB210A7C48 /* BKEventBus.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BKEventBus/BKEventBus-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BKEventBus/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/BKEventBus/BKEventBus.modulemap";
+				PRODUCT_MODULE_NAME = BKEventBus;
+				PRODUCT_NAME = BKEventBus;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		E4F6917E62E6374E44D78345E7137653 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -3086,8 +3086,8 @@
 		C9DBE01ACE8BB2D3B6D8F60412B73E6B /* Build configuration list for PBXNativeTarget "BKEventBus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				990A69D9015E45B4426FA71229F68A03 /* Debug */,
-				601E1E314CF574E4E6EF00EB1F339989 /* Release */,
+				8EC796D9122F5C40E75E72927FC89FBD /* Debug */,
+				DF6447533BB2B50AA0F46FC3FA789A17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
