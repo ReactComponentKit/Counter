@@ -8,7 +8,7 @@ This is [ReactComponentKit](https://github.com/ReactComponentKit/ReactComponentK
 
 ## What is ReactComponentKit
 
-ReactComponentKit is a library for building UIViewComponent based on Component. Additionary, It architect UIViewController as Redux with MVVM. If you use ReactComponentKit, You can make many scenes(UIViewController) more easily. You can share components among scenes. 
+ReactComponentKit is a library for building a UIViewController based on Component. Additionary, It architect UIViewController as Redux with MVVM. If you use ReactComponentKit, You can make many scenes(UIViewController) more easily. You can share components among scenes. 
 
 ## Define Components
 
