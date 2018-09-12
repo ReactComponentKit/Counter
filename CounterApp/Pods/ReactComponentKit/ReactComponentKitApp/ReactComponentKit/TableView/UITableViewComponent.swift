@@ -37,7 +37,7 @@ open class UITableViewComponent: UIViewComponent {
         }
     }
     
-    public var adapter: UITableViewApater? {
+    public var adapter: UITableViewAdapter? {
         didSet {
             tableView.delegate = adapter
             tableView.dataSource = adapter
@@ -76,18 +76,14 @@ open class UITableViewComponent: UIViewComponent {
     }
     
     private let disposeBag = DisposeBag()
-    private(set) var tableView: UITableView
-    public required init(token: Token) {
-        self.tableView = UITableView(frame: .zero, style: .plain)
-        super.init(token: token)
-    }
-    
+    public let tableView: UITableView
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public required init(token: Token, canOnlyDispatchAction: Bool) {
-        fatalError("init(token:canOnlyDispatchAction:) has not been implemented")
+    public required init(token: Token, canOnlyDispatchAction: Bool = true) {
+        self.tableView = UITableView(frame: .zero, style: .plain)
+        super.init(token: token, canOnlyDispatchAction: canOnlyDispatchAction)
     }
     
     open override func setupView() {
