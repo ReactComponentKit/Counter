@@ -7,7 +7,8 @@ target 'CounterApp' do
 
   # Pods for CounterApp
   pod 'ReactComponentKit'
-
+  pod 'SnapKit'
+  
   target 'CounterAppTests' do
     inherit! :search_paths
     # Pods for testing
