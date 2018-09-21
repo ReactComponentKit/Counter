@@ -33,8 +33,8 @@ class CountLabelComponent: UIViewComponent {
         }
     }
     
-    override func on(state: [String : State]?) {
-        guard let count = state?["count"] as? Int else { return }
-        label.text = String(count)
+    override func on(state: State) {
+        guard let countState = state as? CounterState else { return }
+        label.text = String(countState.count)
     }
 }

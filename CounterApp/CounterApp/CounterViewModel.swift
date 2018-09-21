@@ -10,19 +10,22 @@ import Foundation
 import ReactComponentKit
 import BKRedux
 
-class CounterViewModel: RootViewModelType {
+struct CounterState: State {
+    var count: Int = 0
+    var error: (Error, Action)? = nil
+}
+
+class CounterViewModel: RootViewModelType<CounterState> {
     override init() {
         super.init()
         store.set(
-            state: [
-                "count": 0
-            ],
+            initailState: CounterState(),
             reducers: [
-                "count": countReducer
+                StateKeyPath(\CounterState.count): countReducer
             ])
     }
     
-    override func on(newState: [String : State]?) {
+    override func on(newState: CounterState) {
         // Send the new state to the sub components
         eventBus.post(event: .on(state: newState))
     }
