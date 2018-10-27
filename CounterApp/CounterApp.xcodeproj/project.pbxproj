@@ -315,7 +315,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CounterApp/Pods-CounterApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CounterApp/Pods-CounterApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BKEventBus/BKEventBus.framework",
 				"${BUILT_PRODUCTS_DIR}/BKRedux/BKRedux.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactComponentKit/ReactComponentKit.framework",
@@ -334,7 +334,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CounterApp/Pods-CounterApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CounterApp/Pods-CounterApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
