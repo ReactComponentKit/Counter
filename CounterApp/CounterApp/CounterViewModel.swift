@@ -19,7 +19,7 @@ class CounterViewModel: RootViewModelType<CounterState> {
     override init() {
         super.init()
         store.set(
-            initailState: CounterState(),
+            initialState: CounterState(),
             reducers: [
                 StateKeyPath(\CounterState.count): countReducer
             ])
