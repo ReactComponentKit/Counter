@@ -21,7 +21,7 @@ class CounterViewModel: RootViewModelType<CounterState> {
         store.set(
             initialState: CounterState(),
             reducers: [
-                StateKeyPath(\CounterState.count): countReducer
+                countReducer
             ])
     }
     
