@@ -20,11 +20,11 @@ class CounterViewController: UIViewController {
     }()
     
     private lazy var incrementButton: IncrementButtonComponent = {
-        return IncrementButtonComponent(token: viewModel.token, canOnlyDispatchAction: true)
+        return IncrementButtonComponent(token: viewModel.token, receiveState: false)
     }()
     
     private lazy var decrementButton: DecrementButtonComponent = {
-        return DecrementButtonComponent(token: viewModel.token, canOnlyDispatchAction: true)
+        return DecrementButtonComponent(token: viewModel.token, receiveState: false)
     }()
 
     override func viewDidLoad() {
