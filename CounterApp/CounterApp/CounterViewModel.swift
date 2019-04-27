@@ -10,7 +10,7 @@ import Foundation
 import ReactComponentKit
 import BKRedux
 
-struct CounterState: State {
+struct CounterState: State, CountLabelComponentState {
     var count: Int = 0
     var error: (Error, Action)? = nil
 }
@@ -27,6 +27,6 @@ class CounterViewModel: RootViewModelType<CounterState> {
     
     override func on(newState: CounterState) {
         // Send the new state to the sub components
-        eventBus.post(event: .on(state: newState))
+        propagate(state: newState)
     }
 }

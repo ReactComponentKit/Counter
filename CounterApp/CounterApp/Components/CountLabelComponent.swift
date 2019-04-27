@@ -11,6 +11,10 @@ import BKRedux
 import ReactComponentKit
 import SnapKit
 
+protocol CountLabelComponentState {
+    var count: Int { get }
+}
+
 class CountLabelComponent: UIViewComponent {
     
     private lazy var label: UILabel = {
@@ -34,7 +38,7 @@ class CountLabelComponent: UIViewComponent {
     }
     
     override func on(state: State) {
-        guard let countState = state as? CounterState else { return }
+        guard let countState = state as? CountLabelComponentState else { return }
         label.text = String(countState.count)
     }
 }
