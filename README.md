@@ -16,9 +16,12 @@ ReactComponentKit is a library for building a UIViewController based on Componen
 
 ```swift
 import Foundation
-import BKRedux
 import ReactComponentKit
 import SnapKit
+
+protocol CountLabelComponentState {
+    var count: Int { get }
+}
 
 class CountLabelComponent: UIViewComponent {
     
@@ -40,14 +43,16 @@ class CountLabelComponent: UIViewComponent {
         label.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+        // subscribe new state. The new state is dispatched to here when it updated.
+        subscribeState()
     }
-    
-    override func on(state: [String : State]?) {
-        guard let count = state?["count"] as? Int else { return }
-        label.text = String(count)
+        
+    override func on(state: State) {
+        guard let countState = state as? CountLabelComponentState else { return }
+        label.text = String(countState.count)
     }
-}
-```
+}```
 
 UIViewComponent is just a UIView. You can layout sub views or components in the setupView method by using SnapKit. ReactComponentKit uses SnapKit to layout views. 
 
@@ -60,6 +65,8 @@ import RxCocoa
 
 class IncrementButtonComponent: UIViewComponent {
     
+    var onTap: (() -> Void)? = nil
+    
     private let disposeBag = DisposeBag()
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
@@ -67,7 +74,12 @@ class IncrementButtonComponent: UIViewComponent {
         button.setTitle("+", for: [])
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
 
-        button.rx.tap.map { IncrementAction(payload: 1) }.bind(onNext: dispatch).disposed(by: disposeBag)
+        button
+            .rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.onTap?()
+            }).disposed(by: disposeBag)
+            
         
         return button
     }()
@@ -88,6 +100,8 @@ import RxCocoa
 
 class DecrementButtonComponent: UIViewComponent {
     
+    var onTap: (() -> Void)? = nil
+    
     private let disposeBag = DisposeBag()
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
@@ -95,7 +109,11 @@ class DecrementButtonComponent: UIViewComponent {
         button.setTitle("-", for: [])
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         
-        button.rx.tap.map { DecrementAction(payload: 1) }.bind(onNext: dispatch).disposed(by: disposeBag)
+        button
+            .rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.onTap?()
+            }).disposed(by: disposeBag)
         
         return button
     }()
@@ -106,97 +124,87 @@ class DecrementButtonComponent: UIViewComponent {
             make.edges.equalToSuperview()
         }
     }
-}
-```
+}```
 
 You can make above button components more general like as ActionButtonComponent. However, I made button components separately. 
 
-## Define Actions
-
-### IncrementAction & DecrementAction
+## Define Reducers in viewModel
 
 ```swift
-import Foundation
-import BKRedux
-
-struct IncrementAction: Action {
-    let payload: Int
-    
-    init(payload: Int = 1) {
-        self.payload = payload
-    }
-}
-```
-
-```swift
-import Foundation
-import BKRedux
-
-struct DecrementAction: Action {
-    let payload: Int
-    
-    init(payload: Int = 1) {
-        self.payload = payload
-    }
-}
-```
-## Define Reducer
-
-```swift
-import Foundation
-import BKRedux
-import RxSwift
-
-func countReducer(name: String, state: State?) -> (Action) -> Observable<ReducerResult> {
-    return { action in
-        guard let prevState = state as? Int else { return Observable.just(ReducerResult(name: name, result: 0)) }
-        
-        var newState = prevState
-        
-        switch action {
-        case let increment as IncrementAction:
-            newState += increment.payload
-        case let decrement as DecrementAction:
-            newState -= decrement.payload
-        default:
-            break
+...
+	func increase(count: Int) {
+         setState {
+            var mutableState = $0
+            mutableState.count += count
+            return mutableState
         }
-        
-        return Observable.just(ReducerResult(name: name, result: newState))
-        
     }
-}
+    
+    func decrease(count: Int) {
+        setState {
+            var mutableState = $0
+            mutableState.count -= count
+            return mutableState
+        }
+    }
+...
 ```
 
-ReactComponent's Reducer returns Rx' Observable for async actions.
 
 ## Define ViewModel & State
 
 ```swift
 import Foundation
 import ReactComponentKit
-import BKRedux
 
-class CounterViewModel: RootViewModelType {
-    override init() {
-        super.init()
-        store.set(
-            state: [
-                "count": 0
-            ],
-            reducers: [
-                "count": countReducer
-            ])
+struct CounterState: State, CountLabelComponentState {
+    var count: Int = 0
+    var error: RCKError? = nil
+}
+
+class CounterViewModel: RCKViewModel<CounterState> {
+    
+    override func setupStore() {
+        initStore { store in
+            store.initial(state: CounterState())
+        }
     }
     
-    override func on(newState: [String : State]?) {
-        // Send the new state to the sub components
-        eventBus.post(event: .on(state: newState))
+    func increase(count: Int) {
+         setState {
+            var mutableState = $0
+            mutableState.count += count
+            return mutableState
+        }
+    }
+    
+    func decrease(count: Int) {
+        setState {
+            var mutableState = $0
+            mutableState.count -= count
+            return mutableState
+        }
     }
 }
 ```
 
-RootViewModelType has a redux stroe. You can define state. Also, You can set the reducers, middlewares and postwares. 
+RootViewModelType has a redux stroe. You can define state.
+
+## Using Reducers
+
+```swift
+...
+	incrementButton.onTap = { [weak self] in
+        guard let strongSelf = self else { return }
+        strongSelf.viewModel.increase(count: 1)
+    }
+    
+    decrementButton.onTap = { [weak self] in
+        guard let strongSelf = self else { return }
+        strongSelf.viewModel.decrease(count: 1)
+    }
+...
+```
 
 ## Make Scene(UIViewController)
 
@@ -215,11 +223,11 @@ class CounterViewController: UIViewController {
     }()
     
     private lazy var incrementButton: IncrementButtonComponent = {
-        return IncrementButtonComponent(token: viewModel.token, canOnlyDispatchAction: true)
+        return IncrementButtonComponent(token: viewModel.token)
     }()
     
     private lazy var decrementButton: DecrementButtonComponent = {
-        return DecrementButtonComponent(token: viewModel.token, canOnlyDispatchAction: true)
+        return DecrementButtonComponent(token: viewModel.token)
     }()
 
     override func viewDidLoad() {
@@ -247,11 +255,22 @@ class CounterViewController: UIViewController {
             make.width.equalToSuperview().dividedBy(2)
             make.height.equalTo(48)
         }
+        
+        incrementButton.onTap = { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.viewModel.increase(count: 1)
+        }
+        
+        decrementButton.onTap = { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.viewModel.decrease(count: 1)
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }   
+    }
+
 }
 ```
 
