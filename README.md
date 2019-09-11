@@ -52,7 +52,8 @@ class CountLabelComponent: UIViewComponent {
         guard let countState = state as? CountLabelComponentState else { return }
         label.text = String(countState.count)
     }
-}```
+}
+```
 
 UIViewComponent is just a UIView. You can layout sub views or components in the setupView method by using SnapKit. ReactComponentKit uses SnapKit to layout views. 
 
@@ -124,7 +125,8 @@ class DecrementButtonComponent: UIViewComponent {
             make.edges.equalToSuperview()
         }
     }
-}```
+}
+```
 
 You can make above button components more general like as ActionButtonComponent. However, I made button components separately. 
 
@@ -195,14 +197,14 @@ RootViewModelType has a redux stroe. You can define state.
 ```swift
 ...
 	incrementButton.onTap = { [weak self] in
-        guard let strongSelf = self else { return }
-        strongSelf.viewModel.increase(count: 1)
-    }
+		guard let strongSelf = self else { return }
+		strongSelf.viewModel.increase(count: 1)
+	}
     
-    decrementButton.onTap = { [weak self] in
-        guard let strongSelf = self else { return }
-        strongSelf.viewModel.decrease(count: 1)
-    }
+	decrementButton.onTap = { [weak self] in
+		guard let strongSelf = self else { return }
+		strongSelf.viewModel.decrease(count: 1)
+	}
 ...
 ```
 
