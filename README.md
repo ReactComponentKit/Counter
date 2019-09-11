@@ -135,20 +135,20 @@ You can make above button components more general like as ActionButtonComponent.
 ```swift
 ...
 	func increase(count: Int) {
-         setState {
-            var mutableState = $0
-            mutableState.count += count
-            return mutableState
-        }
-    }
+		setState {
+			var mutableState = $0
+				mutableState.count += count
+				return mutableState
+			}
+	}
     
-    func decrease(count: Int) {
-        setState {
-            var mutableState = $0
-            mutableState.count -= count
-            return mutableState
-        }
-    }
+	func decrease(count: Int) {
+		setState {
+			var mutableState = $0
+			mutableState.count -= count
+			return mutableState
+		}
+	}
 ...
 ```
 
