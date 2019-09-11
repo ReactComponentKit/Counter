@@ -20,11 +20,11 @@ class CounterViewController: UIViewController {
     }()
     
     private lazy var incrementButton: IncrementButtonComponent = {
-        return IncrementButtonComponent(token: viewModel.token, receiveState: false)
+        return IncrementButtonComponent(token: viewModel.token)
     }()
     
     private lazy var decrementButton: DecrementButtonComponent = {
-        return DecrementButtonComponent(token: viewModel.token, receiveState: false)
+        return DecrementButtonComponent(token: viewModel.token)
     }()
 
     override func viewDidLoad() {
@@ -51,6 +51,16 @@ class CounterViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide)
             make.width.equalToSuperview().dividedBy(2)
             make.height.equalTo(48)
+        }
+        
+        incrementButton.onTap = { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.viewModel.increase(count: 1)
+        }
+        
+        decrementButton.onTap = { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.viewModel.decrease(count: 1)
         }
     }
 

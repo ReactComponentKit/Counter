@@ -12,6 +12,8 @@ import RxCocoa
 
 class IncrementButtonComponent: UIViewComponent {
     
+    var onTap: (() -> Void)? = nil
+    
     private let disposeBag = DisposeBag()
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
@@ -19,7 +21,12 @@ class IncrementButtonComponent: UIViewComponent {
         button.setTitle("+", for: [])
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
 
-        button.rx.tap.map { IncrementAction(payload: 1) }.bind(onNext: dispatch).disposed(by: disposeBag)
+        button
+            .rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.onTap?()
+            }).disposed(by: disposeBag)
+            
         
         return button
     }()

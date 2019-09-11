@@ -8,25 +8,34 @@
 
 import Foundation
 import ReactComponentKit
-import BKRedux
 
 struct CounterState: State, CountLabelComponentState {
     var count: Int = 0
-    var error: (Error, Action)? = nil
+    var error: RCKError? = nil
 }
 
-class CounterViewModel: RootViewModelType<CounterState> {
-    override init() {
-        super.init()
-        store.set(
-            initialState: CounterState(),
-            reducers: [
-                countReducer
-            ])
+class CounterViewModel: RCKViewModel<CounterState> {
+    
+    override func setupStore() {
+        initStore { store in
+            store.initial(state: CounterState())
+        }
     }
     
-    override func on(newState: CounterState) {
-        // Send the new state to the sub components
-        propagate(state: newState)
+    func increase(count: Int) {
+         setState {
+            var mutableState = $0
+            mutableState.count += count
+            return mutableState
+        }
+    }
+    
+    func decrease(count: Int) {
+        setState {
+            var mutableState = $0
+            mutableState.count -= count
+            return mutableState
+        }
     }
 }
+

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import BKRedux
 import ReactComponentKit
 import SnapKit
 
@@ -35,8 +34,9 @@ class CountLabelComponent: UIViewComponent {
         label.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        subscribeState()
     }
-    
+        
     override func on(state: State) {
         guard let countState = state as? CountLabelComponentState else { return }
         label.text = String(countState.count)

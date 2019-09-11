@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,11 +12,8 @@
 		4EB8B11F212EDDA6009F3F57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8B11D212EDDA6009F3F57 /* Main.storyboard */; };
 		4EB8B121212EDDA7009F3F57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8B120212EDDA7009F3F57 /* Assets.xcassets */; };
 		4EB8B124212EDDA7009F3F57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8B122212EDDA7009F3F57 /* LaunchScreen.storyboard */; };
-		4EB8B12F212EDDA7009F3F57 /* CounterAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B12E212EDDA7009F3F57 /* CounterAppTests.swift */; };
+		4EB8B12F212EDDA7009F3F57 /* CounterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B12E212EDDA7009F3F57 /* CounterViewModelTests.swift */; };
 		4EB8B13A212EDE0C009F3F57 /* CounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B139212EDE0C009F3F57 /* CounterViewModel.swift */; };
-		4EB8B13E212EDED0009F3F57 /* CountReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B13D212EDED0009F3F57 /* CountReducer.swift */; };
-		4EB8B141212EDF62009F3F57 /* IncrementAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B140212EDF62009F3F57 /* IncrementAction.swift */; };
-		4EB8B143212EDF6C009F3F57 /* DecrementAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B142212EDF6C009F3F57 /* DecrementAction.swift */; };
 		4EB8B145212EE1CF009F3F57 /* CountLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B144212EE1CF009F3F57 /* CountLabelComponent.swift */; };
 		4EB8B147212EE5B9009F3F57 /* IncrementButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B146212EE5B9009F3F57 /* IncrementButtonComponent.swift */; };
 		4EB8B149212EE70B009F3F57 /* DecrementButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB8B148212EE70B009F3F57 /* DecrementButtonComponent.swift */; };
@@ -43,12 +40,9 @@
 		4EB8B123212EDDA7009F3F57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EB8B125212EDDA7009F3F57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EB8B12A212EDDA7009F3F57 /* CounterAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CounterAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4EB8B12E212EDDA7009F3F57 /* CounterAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterAppTests.swift; sourceTree = "<group>"; };
+		4EB8B12E212EDDA7009F3F57 /* CounterViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewModelTests.swift; sourceTree = "<group>"; };
 		4EB8B130212EDDA7009F3F57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EB8B139212EDE0C009F3F57 /* CounterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewModel.swift; sourceTree = "<group>"; };
-		4EB8B13D212EDED0009F3F57 /* CountReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountReducer.swift; sourceTree = "<group>"; };
-		4EB8B140212EDF62009F3F57 /* IncrementAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementAction.swift; sourceTree = "<group>"; };
-		4EB8B142212EDF6C009F3F57 /* DecrementAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecrementAction.swift; sourceTree = "<group>"; };
 		4EB8B144212EE1CF009F3F57 /* CountLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountLabelComponent.swift; sourceTree = "<group>"; };
 		4EB8B146212EE5B9009F3F57 /* IncrementButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementButtonComponent.swift; sourceTree = "<group>"; };
 		4EB8B148212EE70B009F3F57 /* DecrementButtonComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecrementButtonComponent.swift; sourceTree = "<group>"; };
@@ -104,8 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				4EB8B13B212EDE57009F3F57 /* Components */,
-				4EB8B13F212EDF47009F3F57 /* Actions */,
-				4EB8B13C212EDEA9009F3F57 /* Reducers */,
 				4EB8B119212EDDA6009F3F57 /* AppDelegate.swift */,
 				4EB8B11B212EDDA6009F3F57 /* CounterViewController.swift */,
 				4EB8B139212EDE0C009F3F57 /* CounterViewModel.swift */,
@@ -120,7 +112,7 @@
 		4EB8B12D212EDDA7009F3F57 /* CounterAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				4EB8B12E212EDDA7009F3F57 /* CounterAppTests.swift */,
+				4EB8B12E212EDDA7009F3F57 /* CounterViewModelTests.swift */,
 				4EB8B130212EDDA7009F3F57 /* Info.plist */,
 			);
 			path = CounterAppTests;
@@ -134,23 +126,6 @@
 				4EB8B148212EE70B009F3F57 /* DecrementButtonComponent.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		4EB8B13C212EDEA9009F3F57 /* Reducers */ = {
-			isa = PBXGroup;
-			children = (
-				4EB8B13D212EDED0009F3F57 /* CountReducer.swift */,
-			);
-			path = Reducers;
-			sourceTree = "<group>";
-		};
-		4EB8B13F212EDF47009F3F57 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-				4EB8B140212EDF62009F3F57 /* IncrementAction.swift */,
-				4EB8B142212EDF6C009F3F57 /* DecrementAction.swift */,
-			);
-			path = Actions;
 			sourceTree = "<group>";
 		};
 		5B9CA2BDA56C52E6FCBB75BB /* Frameworks */ = {
@@ -333,14 +308,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EB8B13E212EDED0009F3F57 /* CountReducer.swift in Sources */,
-				4EB8B143212EDF6C009F3F57 /* DecrementAction.swift in Sources */,
 				4EB8B11C212EDDA6009F3F57 /* CounterViewController.swift in Sources */,
 				4EB8B145212EE1CF009F3F57 /* CountLabelComponent.swift in Sources */,
 				4EB8B11A212EDDA6009F3F57 /* AppDelegate.swift in Sources */,
 				4EB8B147212EE5B9009F3F57 /* IncrementButtonComponent.swift in Sources */,
 				4EB8B149212EE70B009F3F57 /* DecrementButtonComponent.swift in Sources */,
-				4EB8B141212EDF62009F3F57 /* IncrementAction.swift in Sources */,
 				4EB8B13A212EDE0C009F3F57 /* CounterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,7 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EB8B12F212EDDA7009F3F57 /* CounterAppTests.swift in Sources */,
+				4EB8B12F212EDDA7009F3F57 /* CounterViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
