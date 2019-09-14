@@ -15,15 +15,12 @@ class CounterViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
     }
     
     override func tearDown() {
         super.tearDown()
         viewModel.setState {
-            var mutableState = $0
-            mutableState.count = 0
-            return mutableState
+            $0.copy { $0.count = 0 }
         }
     }
     
