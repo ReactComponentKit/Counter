@@ -136,18 +136,19 @@ You can make above button components more general like as ActionButtonComponent.
 ...
 
 func increase(count: Int) {
-	setState {
-		$0.copy { $0.count += count }
-	}
+    setState {
+        $0.copy { $0.count += count }
+    }
 }
     
 func decrease(count: Int) {
-	setState {
-		$0.copy { $0.count -= count }
-	}
+    setState {
+        $0.copy { $0.count -= count }
+    }
 }
 
 ...
+
 ```
 
 
