@@ -1,5 +1,5 @@
 PODS:
-  - ReactComponentKit (2.0.1):
+  - ReactComponentKit (2.0.2):
     - RxBlocking (>= 4.2.0)
     - RxCocoa (>= 4.2.0)
     - RxSwift (>= 4.2.0)
@@ -27,7 +27,7 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
-  ReactComponentKit: e1cbad3cd99afb040faba4f105378fd9dbde6d65
+  ReactComponentKit: 2ce800cbc7d434524bb528a55132c2b5da596771
   RxBlocking: c67185d26498ea3cbe3e121917c3c16739e43123
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18

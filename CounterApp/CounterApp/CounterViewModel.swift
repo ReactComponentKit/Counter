@@ -24,17 +24,13 @@ class CounterViewModel: RCKViewModel<CounterState> {
     
     func increase(count: Int) {
          setState {
-            var mutableState = $0
-            mutableState.count += count
-            return mutableState
+            $0.copy { $0.count += count }
         }
     }
     
     func decrease(count: Int) {
         setState {
-            var mutableState = $0
-            mutableState.count -= count
-            return mutableState
+            $0.copy { $0.count -= count }
         }
     }
 }
