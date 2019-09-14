@@ -134,21 +134,19 @@ You can make above button components more general like as ActionButtonComponent.
 
 ```swift
 ...
-	func increase(count: Int) {
-		setState {
-			var mutableState = $0
-				mutableState.count += count
-				return mutableState
-			}
+
+func increase(count: Int) {
+	setState {
+		$0.copy { $0.count += count }
 	}
+}
     
-	func decrease(count: Int) {
-		setState {
-			var mutableState = $0
-			mutableState.count -= count
-			return mutableState
-		}
+func decrease(count: Int) {
+	setState {
+		$0.copy { $0.count -= count }
 	}
+}
+
 ...
 ```
 
@@ -174,17 +172,13 @@ class CounterViewModel: RCKViewModel<CounterState> {
     
     func increase(count: Int) {
          setState {
-            var mutableState = $0
-            mutableState.count += count
-            return mutableState
+            $0.copy { $0.count += count }
         }
     }
     
     func decrease(count: Int) {
         setState {
-            var mutableState = $0
-            mutableState.count -= count
-            return mutableState
+            $0.copy { $0.count -= count }
         }
     }
 }
@@ -195,17 +189,21 @@ RootViewModelType has a redux stroe. You can define state.
 ## Using Reducers
 
 ```swift
+
 ...
-	incrementButton.onTap = { [weak self] in
-		guard let strongSelf = self else { return }
-		strongSelf.viewModel.increase(count: 1)
-	}
+
+incrementButton.onTap = { [weak self] in
+	guard let strongSelf = self else { return }
+	strongSelf.viewModel.increase(count: 1)
+}
     
-	decrementButton.onTap = { [weak self] in
-		guard let strongSelf = self else { return }
-		strongSelf.viewModel.decrease(count: 1)
-	}
+decrementButton.onTap = { [weak self] in
+	guard let strongSelf = self else { return }
+	strongSelf.viewModel.decrease(count: 1)
+}
+
 ...
+
 ```
 
 ## Make Scene(UIViewController)
